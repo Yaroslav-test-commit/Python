@@ -1,25 +1,15 @@
 def sum_list(list_1, list_2):
-    list_new = []
-    if len(list_1) != len(list_2):
-        if len(list_1) > len(list_2):
-            diff = len(list_1) - len(list_2)
-            for i, v in enumerate(list_1):
-                if i >= len(list_1) - diff:
-                    list_new.append(v)
-                else:
-                    list_new.append(v + list_2[i])
-        else:
-            diff = len(list_2) - len(list_1)
-            for i, v in enumerate(list_2):
-                if i >= len(list_2) - diff:
-                    list_new.append(v)
-                else:
-                    list_new.append(v + list_1[i])
+    len_1, len_2 = len(list_1), len(list_2)
+    min_length = min(len_1, len_2)
+    new_list = []
+    for a, b in zip(list_1, list_2):
+        new_list.append(a + b)
+    if len_1 > len_2:
+        new_list.extend(list_1[min_length:])
     else:
-        for i, v in enumerate(list_1):
-            list_new.append(v + list_2[i])
-    return list_new
+        new_list.extend(list_2[min_length:])
+    return new_list
 
 
-result = sum_list([1, 2, 3, 5, 7], [4, 5, 6, 7])
+result = sum_list([1, 2, 3, 4, 5], [6, 7, 8])
 print(result)
