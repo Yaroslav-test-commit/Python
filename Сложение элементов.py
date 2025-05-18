@@ -1,13 +1,13 @@
 def sum_list(list_1, list_2):
     len_1, len_2 = len(list_1), len(list_2)
-    min_length = min(len_1, len_2)
+    min_len = min(len_1, len_2)
     new_list = []
-    for a, b in zip(list_1, list_2):
-        new_list.append(a + b)
+    for a in range(min_len):
+        new_list.append(list_1[a] + list_2[a])
     if len_1 > len_2:
-        new_list.extend(list_1[min_length:])
+        new_list.extend(list_1[min_len:])
     else:
-        new_list.extend(list_2[min_length:])
+        new_list.extend(list_2[min_len:])
     return new_list
 
 
